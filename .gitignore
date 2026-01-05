@@ -1,2 +1,21 @@
-__pycache__
-build
+# Zephyr build output
+build/
+twister-out/
+
+# West workspace metadata
+.west/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
