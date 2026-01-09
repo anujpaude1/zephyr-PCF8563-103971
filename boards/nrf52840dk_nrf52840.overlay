@@ -1,7 +1,12 @@
+/*
+ * PCF8563 RTC on nRF52840 DK
+ * SCL -> P0.27, SDA -> P0.26 (Arduino header)
+ * INT/CLK output not connected in this test setup
+ */
 &i2c0 {
     status = "okay";
     clock-frequency = <100000>;
-    
+
     pcf8563: pcf8563@51 {
         compatible = "nxp,pcf8563";
         reg = <0x51>;
