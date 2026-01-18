@@ -1,5 +1,6 @@
 /*
  * PCF8563 RTC Driver Bug Test - Using REAL Driver
+ * Initial project setup and build configuration verified
  */
 
 #include <zephyr/kernel.h>
