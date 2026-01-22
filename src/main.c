@@ -87,18 +87,21 @@ int main(void)
     LOG_INF("\n");
     
     /* Test with different years */
+    test_year_with_real_driver(1970);
+    k_sleep(K_MSEC(500));
+
     test_year_with_real_driver(2000);
     k_sleep(K_MSEC(500));
-    
+
     test_year_with_real_driver(2026);
     k_sleep(K_MSEC(500));
-    
+
     test_year_with_real_driver(2050);
     k_sleep(K_MSEC(500));
 
     test_year_with_real_driver(1920);
     k_sleep(K_MSEC(500));
-    
+
     test_year_with_real_driver(2099);
     
     LOG_INF("\n========================================");
