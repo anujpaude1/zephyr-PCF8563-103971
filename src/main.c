@@ -61,18 +61,20 @@ static void test_year_with_real_driver(uint16_t actual_year)
     }
     
     /* Check results */
-    LOG_INF("Read back: tm_year=%d (year %d)", 
-            get_time.tm_year, get_time.tm_year + 1900);
-    
+    LOG_INF("Read back: %04d-%02d-%02d %02d:%02d:%02d (tm_year=%d)",
+            get_time.tm_year + 1900, get_time.tm_mon + 1, get_time.tm_mday,
+            get_time.tm_hour, get_time.tm_min, get_time.tm_sec,
+            get_time.tm_year);
+
     if (get_time.tm_year == set_time.tm_year) {
         LOG_INF("PASS: Year matches!");
     } else {
         LOG_ERR("FAIL: Year mismatch!");
-        LOG_ERR("  Expected tm_year: %d (year %d)", 
+        LOG_ERR("  Expected tm_year: %d (year %d)",
                 set_time.tm_year, set_time.tm_year + 1900);
-        LOG_ERR("  Got tm_year:      %d (year %d)", 
+        LOG_ERR("  Got tm_year:      %d (year %d)",
                 get_time.tm_year, get_time.tm_year + 1900);
-        LOG_ERR("  Difference:       %d years", 
+        LOG_ERR("  Difference:       %d years",
                 set_time.tm_year - get_time.tm_year);
     }
 }
