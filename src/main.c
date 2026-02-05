@@ -13,6 +13,9 @@ LOG_MODULE_REGISTER(pcf8563_test, LOG_LEVEL_INF);
 /* Get the RTC device from device tree */
 #define RTC_DEV DT_NODELABEL(pcf8563)
 
+static int pass_count;
+static int fail_count;
+
 static void test_year_with_real_driver(uint16_t actual_year)
 {
     const struct device *rtc = DEVICE_DT_GET(RTC_DEV);
@@ -68,8 +71,10 @@ static void test_year_with_real_driver(uint16_t actual_year)
 
     if (get_time.tm_year == set_time.tm_year) {
         LOG_INF("PASS: Year matches!");
+        pass_count++;
     } else {
         LOG_ERR("FAIL: Year mismatch!");
+        fail_count++;
         LOG_ERR("  Expected tm_year: %d (year %d)",
                 set_time.tm_year, set_time.tm_year + 1900);
         LOG_ERR("  Got tm_year:      %d (year %d)",
@@ -81,6 +86,9 @@ static void test_year_with_real_driver(uint16_t actual_year)
 
 int main(void)
 {
+    pass_count = 0;
+    fail_count = 0;
+
     LOG_INF("\n");
     LOG_INF("========================================");
     LOG_INF("  PCF8563 REAL DRIVER Bug Test");
@@ -108,6 +116,7 @@ int main(void)
     
     LOG_INF("\n========================================");
     LOG_INF("Test Complete - Check results above");
+    LOG_INF("  PASSED: %d  FAILED: %d", pass_count, fail_count);
     LOG_INF("========================================\n");
     
     return 0;
