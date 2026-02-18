@@ -1,0 +1,21 @@
+# Load custom PCF8563 peripheral
+include @/root/zephyrproject/pcf8563-bug-test/PCF8563.cs
+
+# Create machine
+mach create
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+
+# Attach PCF8563 to TWI0 at address 0x51
+machine LoadPlatformDescriptionFromString "rtc: Timers.PCF8563 @ twi0 0x51"
+
+# Enable detailed logging
+logLevel 3
+
+# Load Zephyr firmware
+sysbus LoadELF @/root/zephyrproject/pcf8563-bug-test/build/zephyr/zephyr.elf
+
+# Show UART output
+showAnalyzer sysbus.uart0
+
+# Start simulation
+start
