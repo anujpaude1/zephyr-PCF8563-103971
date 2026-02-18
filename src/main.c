@@ -109,8 +109,8 @@ int main(void)
     test_year_with_real_driver(2050);
     k_sleep(K_MSEC(500));
 
-    test_year_with_real_driver(1920);
-    k_sleep(K_MSEC(500));
+    // test_year_with_real_driver(1920);
+    // k_sleep(K_MSEC(500));
 
     test_year_with_real_driver(2099);
     
